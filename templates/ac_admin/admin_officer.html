@@ -1,0 +1,99 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin</title>
+</head>
+<body>
+       <table align="center" border="0">
+            <tr>
+                <th>
+                    {% include 'title.html' %}
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    {% include 'ac_admin/admin_menu.html' %}
+                </th>
+            </tr>
+            <tr><Td></Td></tr>
+            <tr><Td></Td></tr>
+            <tr><Td></Td></tr>
+            <tr>
+                <th>
+                <table align="center" border="0">
+                    <tr>
+                        <th>
+
+                    {% if dept_data %}
+                        <form action="{% url 'admin_save_officer' %}" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                    <table align="center" border="0">
+                        <tr><th>Register New Officer</th></tr>
+                        <tr><th><input type="number" placeholder="Idno" required name="idno"></th></tr>
+                        <tr><th><input type="text" placeholder="Name" required name="name"></th></tr>
+                        <tr><th>
+                            <select name="dept" required>
+                                {% for x in dept_data %}
+                                <option>{{ x.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </th></tr>
+                        <tr><th><input type="number" placeholder="Contact No" required name="contact"></th></tr>
+                        <tr><th><input type="file" required name="image"></th></tr>
+                        <tr><th><input type="text" placeholder="Username" required name="username"></th></tr>
+                        <tr><th><input type="password" placeholder="Password" required name="password"></th></tr>
+                        <tr><th><button type="submit">Save</button> </th></tr>
+
+                        {% if message %}
+                            <font color="red" size="4">{{ message }}</font>
+                        {% endif %}
+
+
+                    </table>
+                        </form>
+                    {% else %}
+                        <font face="Arial Black" size="4" color="red">Please Add Department First</font>
+                    {% endif %}
+                         </th>
+
+                    <th>
+                        {% if officer_data %}
+                        <table align="center" border="2">
+                            <tr>
+                                <th colspan="5">Officer's Details</th>
+                            </tr>
+                            <tr>
+                                <th>Idno</th>
+                                <th>Name</th>
+                                <th>Department</th>
+                                <th>Contact No</th>
+                                <th>Image</th>
+                            </tr>
+
+                        {% for x in officer_data %}
+                             <tr>
+                                <th>{{ x.idno }}</th>
+                                <th>{{ x.name }}</th>
+                                <th>{{ x.deparment_id }}</th>
+                                <th>{{ x.contact }}</th>
+                                <th>
+                                    <img src="{{ x.image.url }}" width="100" height="100">
+                                </th>
+                            </tr>
+                        {% endfor %}
+
+                        </table>
+                        {% endif %}
+
+
+                    </th>
+                    </tr>
+                </table>
+                </th>
+
+            </tr>
+       </table>
+</body>
+</html>

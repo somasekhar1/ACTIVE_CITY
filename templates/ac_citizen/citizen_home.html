@@ -1,0 +1,43 @@
+
+{% if request.session.username %}
+
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin</title>
+</head>
+<body>
+       <table align="center">
+            <tr>
+                <th>
+                    {% include 'title.html' %}
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    {% include 'ac_citizen/citizen_menu.html' %}
+                </th>
+            </tr>
+            <tr>
+                <th><h2> Welcome Mr/Miss : {{ request.session.username }}</h2></th>
+            </tr>
+           <tr>
+               <th>
+                   <img src="{% static 'images/citizen.png' %}" width="200" height="200">
+               </th>
+           </tr>
+            <tr>
+                           <th>
+                               {% for message in messages %}
+                                     {{ message }}
+                                {% endfor %}
+                           </th>
+                       </tr>
+        </table>
+</body>
+</html>
+{% else %}
+    <h1>Please Login</h1>
+{% endif %}

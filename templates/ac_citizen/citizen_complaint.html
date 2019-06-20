@@ -1,0 +1,57 @@
+
+{% if request.session.username %}
+
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin</title>
+</head>
+<body>
+       <table align="center">
+            <tr>
+                <th>
+                    {% include 'title.html' %}
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    {% include 'ac_citizen/citizen_menu.html' %}
+                </th>
+            </tr>
+           <tr>
+               <th>
+               <form action="{% url 'citizen_complaint_register'%}" method="post" enctype="multipart/form-data">
+                   {% csrf_token %}
+                    <table align="center" border="2" bgcolor="#adff2f">
+                        <tr><th>Register New Complaint </th></tr>
+                        <tr><th><input type="number" placeholder="Complaint No" required name="cid"></th></tr>
+                        <tr><th><input type="number" required readonly name="ctid" value="{{ request.session.ctid }}"></th></tr>
+                        <tr><th>
+                            <select name="dept" required>
+                                {% for x in object_list %}
+                                    <option>{{ x.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </th></tr>
+                        <tr><th><textarea name="message" placeholder="Message" required></textarea> </th></tr>
+                        <tr><th><input type="file" name="image" required></th></tr>
+                        <tr><th><button type="submit">Register</button> </th></tr>
+                    </table>
+               </form>
+               </th>
+           </tr>
+            <tr>
+                           <th>
+                               {% for message in messages %}
+                                     {{ message }}
+                                {% endfor %}
+                           </th>
+                       </tr>
+        </table>
+</body>
+</html>
+{% else %}
+    <h1>Please Login</h1>
+{% endif %}

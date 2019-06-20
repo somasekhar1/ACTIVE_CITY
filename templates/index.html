@@ -1,0 +1,34 @@
+{% load staticfiles %}
+<html>
+    <title>Active City</title>
+    <body>
+        <table align="center">
+            <tr>
+                <th>
+                    {% include 'title.html' %}
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    {% include 'menu.html' %}
+                </th>
+            </tr>
+            <tr>
+                <th>
+
+                    <table align="center" border="0">
+                        <tr>
+                            <th width="400">
+Active City is a non-profit organization dedicated to ensuring that young people in Hartford have access to organized and affordable youth athletic programs. We support organizations and programs that serve youth through athletic programing throughout Hartford. Working with community stakeholders, we will transform Hartford into America’s most physically active city for children. These programs will grow and develop their spirit, mind, and body, while fostering relationships between the city’s youth and positive members of our community.
+                            </th>
+                            <th>
+                                <img src="{% static 'images/title image.jpg' %}" width="250">
+                            </th>
+                        </tr>
+                    </table>
+
+                </th>
+            </tr>
+        </table>
+    </body>
+</html>

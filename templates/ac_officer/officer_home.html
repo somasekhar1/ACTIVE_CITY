@@ -1,0 +1,35 @@
+{% if request.session.off_un %}
+
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin</title>
+</head>
+<body>
+       <table align="center">
+            <tr>
+                <th>
+                    {% include 'title.html' %}
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    {% include 'ac_officer/officer_menu.html' %}
+                </th>
+            </tr>
+            <tr><Td></Td></tr>
+            <tr><Td></Td></tr>
+            <tr><Td></Td></tr>
+            <tr>
+                <th>
+                    <img src="{% static 'images/officer.png' %}" width="200" height="200">
+                </th>
+            </tr>
+       </table>
+</body>
+</html>
+{% else %}
+    <h1> Please Login </h1>
+{% endif %}

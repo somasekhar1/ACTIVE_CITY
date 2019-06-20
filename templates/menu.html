@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <table align="center" border="0">
+        <tr>
+            <th width="100" height="30" bgcolor="yellow"> <font color="white">
+            <a href="{% url 'main_page' %}">
+                Home
+            </a>
+            </font> </th>
+
+
+            <th width="100" height="30" bgcolor="yellow"><font color="white">
+                <a href="{% url 'admin_index' %}">
+                    Admin
+                </a>
+            </font> </th>
+
+
+            <th width="100" height="20" bgcolor="yellow"> <font color="white">
+              <a href="{% url 'officer_index' %}">
+                Officer
+              </a>
+            </font> </th>
+
+            <th width="100" height="20" bgcolor="yellow"> <font color="white">
+                <a href="{% url 'citizen_index' %}">
+                    Citizen
+                </a>
+            </font></th>
+            <th width="100" height="20"bgcolor="maroon"> <font color="white">Contact Us</font> </th>
+        </tr>
+        <tr><th height="10"></th></tr>
+    </table>
+</body>
+</html>

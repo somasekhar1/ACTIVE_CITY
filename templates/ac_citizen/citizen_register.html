@@ -1,0 +1,59 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin</title>
+</head>
+<body>
+       <table align="center">
+            <tr>
+                <th>
+                    {% include 'title.html' %}
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    {% include 'menu.html' %}
+                </th>
+            </tr>
+           <tr>
+               <th>
+                   <table align="center" border="0">
+                       <tr>
+                           <th>
+                           <img src="{% static 'images/dossier.png' %}" width="200" height="200">
+                           </th>
+                           <th>
+                                <form action="{% url 'citizen_save' %}" method="post" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                               <table align="center" border="0">
+                                   <tr>
+                                       <th height="50"> Citizen Registration Page </th>
+                                   </tr>
+                                   <tr><th><input type="text" placeholder="Name" name="name" required></th></tr>
+                                   <tr><th><input type="number" placeholder="Contact No" name="contact" required></th></tr>
+                                   <tr><th><input type="text" placeholder="City" name="city" required></th></tr>
+                                   <tr><th><input type="file" name="image" required></th></tr>
+                                   <tr><th><textarea name="address" placeholder="Address"></textarea> </th></tr>
+                                   <tr><th><input type="text" placeholder="Username" name="username" required><span>Must be 8Char's</span></th></tr>
+                                   <tr><th><input type="password" placeholder="Password" name="password" required><span>Must be 8Char's</span></th></tr>
+                                   <tr><th><button type="submit">Register</button></th></tr>
+                               </table>
+                                </form>
+                           </th>
+                       </tr>
+                         <tr><th colspan="0">{% if message %}<font color="red">{{ message }}</font>{% endif %}</th></tr>
+                   </table>
+               </th>
+           </tr>
+            <tr>
+                           <th>
+                               {% for message in messages %}
+                                     {{ message }}
+                                {% endfor %}
+                           </th>
+                       </tr>
+        </table>
+</body>
+</html>

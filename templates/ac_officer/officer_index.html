@@ -1,0 +1,54 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin</title>
+</head>
+<body>
+       <table align="center">
+            <tr>
+                <th>
+                    {% include 'title.html' %}
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    {% include 'menu.html' %}
+                </th>
+            </tr>
+           <tr>
+               <th>
+                   <table align="center" border="0">
+                       <tr>
+                           <th>
+                           <img src="{% static 'images/officer.png' %}" width="200" height="200">
+                           </th>
+                           <th>
+                            <form action="{% url 'login_check' %}" method="post">
+                                {% csrf_token %}
+                               <table align="center" border="0">
+                                   <tr>
+                                       <th height="50"> Officer Login Page </th>
+                                   </tr>
+                                   <tr><td height="50"><input type="text" required placeholder="Username" name="username"></td></tr>
+                                   <tr><td height="50"><input type="password" required placeholder="Password" name="password">
+                                   <input type="hidden" name="utype" value="officer"></td></tr>
+                                   <tr><td height="50"><button type="submit">Login</button> </td></tr>
+                               </table>
+                            </form>
+                           </th>
+                       </tr>
+                   </table>
+               </th>
+           </tr>
+            <tr>
+                           <th>
+                               {% for message in messages %}
+                                     {{ message }}
+                                {% endfor %}
+                           </th>
+                       </tr>
+        </table>
+</body>
+</html>

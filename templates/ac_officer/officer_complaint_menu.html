@@ -1,0 +1,52 @@
+
+{% if request.session.off_un %}
+
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+       <table align="center">
+            <tr>
+                <th>
+                    {% include 'title.html' %}
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    {% include 'ac_officer/officer_menu.html' %}
+                </th>
+            </tr>
+           <tr>
+               <th>
+                   <h3>Complaint Menu Options</h3>
+                   <table align="center" border="2">
+                       <tr><th height="50">
+                           <a href="{% url 'officer_assigned_complaints' %}">
+                            Assigned Complaints
+                           </a>
+                       </th></tr>
+                       <tr><th height="50">
+
+                          <a href="{% url 'officer_closed_complaints' %}">
+                            Closed Complaints
+                           </a>
+                       </th></tr>
+                   </table>
+               </th>
+           </tr>
+            <tr>
+                           <th>
+                               {% for message in messages %}
+                                     {{ message }}
+                                {% endfor %}
+                           </th>
+                       </tr>
+        </table>
+</body>
+</html>
+{% else %}
+    <h1>Please Login</h1>
+{% endif %}
